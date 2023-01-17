@@ -1,0 +1,21 @@
+netcdf ghi_fcst {
+dimensions: 
+        time = 1;
+        fcst_num = 168;
+        site_num = 1;
+variables:
+        double creation_time(time) ;
+               creation_time:long_name = "File created at this time";
+               creation_time:units = "seconds since 1970-1-1 00:00:00" ;
+        double valid_times(fcst_num);
+               valid_times:long_name = "valid times of forecast" ;
+               valid_times:units = "seconds since 1970-1-1 00:00:00" ;
+        int siteId(site_num);
+              siteId:long_name = "Integer identification number of site";
+              siteId:units = "none";
+        float power_percent_capacity(site_num,fcst_num);
+              power_percent_capacity:long_name = "Power percent capacity factor";
+              power_percent_capacity:units = "none";
+
+}
+

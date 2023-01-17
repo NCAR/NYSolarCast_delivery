@@ -1,0 +1,46 @@
+netcdf ghi_fcst {
+dimensions: 
+        time = 1;
+        fcst_num = 24;
+        site_num = 126;
+variables:
+        double creation_time(time) ;
+               creation_time:long_name = "File created at this time";
+               creation_time:units = "seconds since 1970-1-1 00:00:00" ;
+        double valid_times(fcst_num);
+               valid_times:long_name = "valid times of forecast" ;
+               valid_times:units = "seconds since 1970-1-1 00:00:00" ;
+        int siteId(site_num);
+              siteId:long_name = "Integer identification number of site";
+              siteId:units = "none";
+        float GHI(site_num,fcst_num);
+	      GHI:_FillValue = 9.96921e+36f ;
+              GHI:long_name = "Statcast Global Horizontal Irradiance";
+              GHI:units = "W/m^2";
+        float Kt(site_num,fcst_num);
+	      Kt:_FillValue = 9.96921e+36f ;
+              Kt:long_name = "Statcast Clearness Index"; 
+              Kt:units = "none";
+        float wrfGHI(site_num,fcst_num);
+	      wrfGHI:_FillValue = 9.96921e+36f ;
+              wrfGHI:long_name = "WRF Global Horizontal Irradiance";
+              wrfGHI:units = "W/m^2";
+        float wrfKt(site_num, fcst_num);
+	      wrfKt:_FillValue = 9.96921e+36f ;
+              wrfKt:long_name = "WRF Clearness Index";
+              wrfKt:units = "none";
+        float TOA(site_num,fcst_num);
+	      TOA:_FillValue = 9.96921e+36f ;
+              TOA:long_name = "15min time ending average of Top of the Atmosphere Irradiance";
+              TOA:units = "W/m^2";
+        float wrfTOA(site_num,fcst_num);
+	      wrfTOA:_FillValue = 9.96921e+36f ;
+              wrfTOA:long_name = "15min time ending average of WRF Top of the Atmosphere Irradiance";
+              wrfTOA:units = "W/m^2";
+        float solarEl(site_num,fcst_num);
+	      solarEl:_FillValue = 9.96921e+36f ;
+              solarEl:long_name = "15min time ending average of solar elevation angle";
+              solarEl:units = "degrees";
+
+}
+

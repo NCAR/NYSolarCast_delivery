@@ -1,0 +1,167 @@
+{
+    "Variables": [
+        {
+            "input_name": "DATETIME",
+            "output_name": "observationTime",
+            "Attributes": [
+                {
+                    "long_name": "UTC Observation Time",
+                    "units": "Seconds since epoch"
+                }
+            ]
+        },
+	{
+	    "input_name" : "int_id",
+	    "output_name" : "stationID",
+	    "Attributes" : [
+		{
+		    "long_name" : "integer station id"
+		}
+	    ]
+	},
+        {
+            "input_name": "relative_humidity [%]",
+            "output_name": "relative_humidity",
+            "Attributes": [
+                {
+                    "long_name": "Relative Humidity",
+                    "units": "%"
+                }
+            ]
+        },
+        {
+            "input_name": "temperature_2m [degC]",
+            "output_name": "T_2",
+            "Attributes": [
+                {
+                    "long_name": "Temperature at 2m",
+                    "units": "C"
+                }
+            ]
+        },
+        {
+            "input_name": "temperature_9m [degC]",
+            "output_name": "T_9",
+            "Attributes": [
+                {
+                    "long_name": "Temperature at 9m",
+                    "units": "C"
+                }
+            ]
+        },
+        {
+            "input_name": "solar_insolation [watt/m**2]",
+            "output_name": "solar_insolation",
+            "Attributes": [
+                {
+                    "long_name": "Solar insolation (GHI)",
+                    "units": "W/m^2"
+                }
+            ]
+        },
+        {
+            "input_name": "station_pressure [mbar]",
+            "output_name": "pressure",
+            "Attributes": [
+                {
+                    "long_name": "Pressure",
+                    "units": "mbar"
+                }
+            ]
+        },
+        {
+            "input_name": "wind_speed [m/s]",
+            "output_name": "wind_speed",
+            "Attributes": [
+                {
+                    "long_name": "Wind Speed",
+                    "units": "m/s"
+                }
+            ]
+        },
+        {
+            "input_name": "wind_maximum [m/s]",
+            "output_name": "wind_max",
+            "Attributes": [
+                {
+                    "long_name": "Maximum Wind Speed",
+                    "units": "m/s"
+                }
+            ]
+        },
+        {
+            "input_name": "wind_direction [degrees]",
+            "output_name": "wind_dir",
+            "Attributes": [
+                {
+                    "long_name": "Wind Direction",
+                    "units": "Degrees"
+                }
+            ]
+        },
+        {
+            "input_name": "precip_since_00Z [mm]",
+            "output_name": "precip_since_00Z",
+            "Attributes": [
+                {
+                    "long_name": "Precip reported since 00z",
+                    "units": "mm"
+                }
+            ]
+        },
+        {
+            "input_name": "snow_depth [in]",
+            "output_name": "snow_depth",
+            "Attributes": [
+                {
+                    "long_name": "Snow Depth",
+                    "units": "inches"
+                }
+            ]
+        },
+        {
+            "input_name": "apparent_elevation",
+            "output_name": "solar_elevation_angle",
+            "Attributes": [
+                {
+                    "long_name": "Apparent solar elevation angle",
+                    "units": "degrees"
+                }
+            ]
+        },
+        {
+            "input_name": "azimuth",
+            "output_name": "solar_azimuth_angle",
+            "Attributes": [
+                {
+                    "long_name": "Solar azimuth angle",
+                    "units": "degrees"
+                }
+            ]
+        },	
+        {
+            "input_name": "TOA",
+            "output_name": "TOA",
+            "Attributes": [
+                {
+                    "long_name": "Top of Atmosphere Irradiance",
+                    "units": "W/m^2"
+                }
+            ]
+        },	
+        {
+            "input_name": "Kt",
+            "output_name": "Kt",
+            "Attributes": [
+                {
+                    "long_name": "Clearness Index",
+                    "units": "percent"
+                }
+            ]
+        }	
+    ],
+    "Global Attributes": [
+        {
+        }
+    ]
+}

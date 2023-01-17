@@ -1,0 +1,12 @@
+
+CapacityFactor.
+
+DateTime: ignore.
+MonthOfYear: discrete 12.
+Site: ignore.
+EstCap: ignore.
+tempK: continuous.
+relativeHumidity: continuous.
+ClimateZone: discrete 10.
+solarInsolation: continuous.
+CapacityFactor: continuous.

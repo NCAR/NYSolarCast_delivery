@@ -1,0 +1,41 @@
+
+import os
+env = Environment(
+   CPPPATH=["/usr/local/include","/usr/local/netcdf4/include","/usr/local/hdf5/include", "/home/epri_solar/include"],
+   #CCFLAGS=os.environ["LOCAL_CCFLAGS"], 
+   LIBPATH=["/usr/local/hdf4-4.2.15/lib","/d1/wind_energy/github/wind_energy/lib","/usr/local/netcdf/lib","/usr/local/hdf5/lib","/usr/local/szip/lib", "/home/epri_solar/lib","/d1/local/lib"])
+
+env["INSTALLPATH"] = "~/bin"
+    
+PctPowerFcst = env.Program("pct_power_fcst", 
+                           ["Arguments.cc",
+                            "MainPctPowerFcst.cc",
+                            "FcstProcessor.cc",
+                            "BlendedModelMgr.cc",
+                            "BlendedModelReader.cc",
+                            "SiteMgr.cc",
+                            "cdf_field_writer.cc"],
+                            LIBS=[ 
+                               "config++",
+                               "boost_filesystem",
+                               "boost_system",
+                               "cubist_interface",
+                               "ncfc",
+                               "netcdf_c++4",                               
+                               "netcdf",
+                               "hdf5_hl",                               
+                               "hdf5",
+                               "mfhdf",
+                               "df",
+                               "jpeg",
+                               "log",
+                               "z",
+                               "m",
+                               "sz",
+                               "curl",
+                               "dl"
+                               ]  , LINKFLAGS="--static")
+
+env.Install(env["INSTALLPATH"], "pct_power_fcst")
+env.Alias("install", env["INSTALLPATH"])
+
