@@ -1,0 +1,48 @@
+{
+    "WRF_dir" : "/glade/p/ral/wsap/jaredlee/EPRI/Phase3/wrf/nowcast/",
+    "WRF_day_ahead_dir" : "/glade/p/ral/wsap/jaredlee/EPRI/Phase3/wrf/dayahead/",
+    "HRRR_dir" : "/glade/work/brummet/epri/data/hrrr_nc/",
+
+    "WRF_blend_vars_COMMENT" : "Mapping from input var to output var",
+    "WRF_blend_vars" : {"SWDOWN" : "ghi"},
+
+    "HRRR_blend_vars_COMMENT" : "Mapping from input var to output var",
+    "HRRR_blend_vars" : {"dswrf_sfc" : "ghi"},
+
+    "blending_weights_COMMENT" : ["LeadTime","WRF_weight", "HRRR_weight"],
+    "blending_weights" : {"ghi" : [[900, 0.50, 0.50],
+				   [1800, 0.50, 0.50],
+				   [2700, 0.50, 0.50],
+				   [3600, 0.50, 0.50],
+				   [4500, 0.50, 0.50],
+				   [5400, 0.50, 0.50],
+				   [6300, 0.50, 0.50],
+				   [7200, 0.50, 0.50],
+				   [8100, 0.50, 0.50],
+				   [9000, 0.50, 0.50],
+				   [9900, 0.50, 0.50],
+				   [10800,0.50, 0.50],
+				   [11700,0.50, 0.50],
+				   [12600,0.50, 0.50],
+				   [13500,0.50, 0.50],
+				   [14400,0.50, 0.50],
+				   [15300,0.50, 0.50],
+				   [16200,0.50, 0.50],
+				   [17100,0.50, 0.50],
+				   [18000,0.50, 0.50],
+				   [18900,0.50, 0.50],
+				   [19800,0.50, 0.50],
+				   [20700,0.50, 0.50],
+				   [21600,0.50, 0.50]]
+				  },
+			  
+    "WRF_pass_through_vars_COMMENT" : "List of variables to pass through to output file",
+    "WRF_pass_through_vars" : ["T2"],
+
+    "HRRR_pass_through_vars_COMMENT" : "List of variables to pass through to output file",
+    "HRRR_pass_through_vars" : [],
+
+    "HRRR_fall_back_vars_COMMENT" : "These vars are used if the WRF ones dont exist [WRF_VAR, HRR_VAR]",
+    "HRRR_fall_back_vars" : [["T2","T_sfc"],["RH", "RH"]]
+
+}

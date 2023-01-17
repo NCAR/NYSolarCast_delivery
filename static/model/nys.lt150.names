@@ -1,0 +1,51 @@
+Kt_at_leadtime | target.
+DateTime : ignore.
+LeadTime : ignore.
+MesoSite : ignore.
+ValidTime : ignore.
+climateRegion : ignore.
+temp_2m [degC] : continuous.
+relative_humidity [percent] : ignore.
+solar_insolation [W/m^2] : ignore.
+station_pressure [mbar] : ignore.
+avg_wind_speed_sonic [m/s] : ignore.
+wind_direction_sonic [degrees] : ignore.
+apparent_elevation : continuous.
+azimuth : continuous.
+TOA : ignore.
+Kt : continuous.
+prev15_Kt : continuous.
+prev30_Kt : continuous.
+prev45_Kt : continuous.
+Kt_at_leadtime : continuous.
+TOA_at_leadtime : ignore.
+azimuth_at_leadtime : continuous.
+apparent_elevation_at_leadtime : continuous.
+solar_insolation [W/m^2]_at_leadtime : ignore.
+Q2 : continuous.
+SWDOWN : ignore.
+SWDDNI : continuous.
+SWDDIF : ignore.
+TAOD5502D : ignore.
+CLDFRAC2D : ignore.
+WVP : continuous.
+WP_TOT_SUM : continuous.
+TAU_QC_TOT : continuous.
+TAU_QS : ignore.
+TAU_QI_TOT : ignore.
+T2_at_leadtime : continuous.
+Q2_at_leadtime : continuous.
+PSFC_at_leadtime : ignore.
+WSPD10_at_leadtime : ignore.
+WDIR10_at_leadtime : ignore.
+SWDOWN_at_leadtime : ignore.
+SWDDNI_at_leadtime : continuous.
+SWDDIF_at_leadtime : continuous.
+TAOD5502D_at_leadtime : continuous.
+CLDFRAC2D_at_leadtime : continuous.
+WVP_at_leadtime : continuous.
+WP_TOT_SUM_at_leadtime : continuous.
+TAU_QC_TOT_at_leadtime : continuous.
+TAU_QS_at_leadtime : continuous.
+TAU_QI_TOT_at_leadtime : ignore.
+CLRNIDX_at_leadtime : continuous.

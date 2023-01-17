@@ -1,0 +1,15 @@
+{
+    "Info": 
+    {
+	"date_field" : "DateTime",
+	"date_format" : "%Y-%m-%d %H:%M:%S",
+	"avg_interval" : 900,
+	"avg_type" : "time_ending",
+	"ignore_fields" : ["datetime"],
+	"pass_through_fields" : [],
+	"wind_dir_avg" : [{"WindDirColumn" : "wind_direction [degrees]",
+                           "WindSpeedColumn" : "wind_speed [m/s]"}],
+	"site_field" : "station"
+    }
+    
+}

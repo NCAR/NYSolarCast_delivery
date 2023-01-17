@@ -1,0 +1,5 @@
+There should be a 'Farm_XX_site_list.csv' file for each UPV farm in the system.  This file should look like 'Farm_01_site_list.csv', where it contains a header matching "#Site" followed single entry listing the nearest WRF grid point to the UPV location.
+
+There should be a 'ProviderX_sites_match_grid.csv' file for each UPV provider.  This file should contain the farm name as well as meta data, matching 'Provider0_sites_match_grid.csv'.
+
+There should be entries in 'farm_capacity_list.csv' for each UPV farm.  The entry should match the current one with farm name followed by meta data.

@@ -1,0 +1,83 @@
+netcdf nam {
+
+dimensions:
+
+	record = UNLIMITED ;	// (reference time, forecast time)
+	level = 40 ;            // isobaric levels for most parameters
+        datetime_len = 21 ; 	// string length for datetime strings
+	max_site_num = 69696 ;	// max number of sites
+
+variables:
+
+	double	reftime(record) ;	// reference time of the model
+		reftime:long_name = "reference time" ;
+		reftime:units = "hours since 1992-1-1" ;
+
+	double	valtime(record) ;       // forecast time ("valid" time)
+		valtime:long_name = "valid time" ;
+		valtime:units = "hours since 1992-1-1" ;
+
+	:record = "reftime, valtime" ;	// "dimension attribute" -- means
+					// (reftime, valtime) uniquely
+					// determine record
+
+	char	datetime(record, datetime_len) ; // derived from reftime
+		datetime:long_name = "reference date and time" ;
+		// units YYYY-MM-DD hh:mm:ssZ  (ISO 8601)
+
+	float	valtime_offset(record) ; // derived as valtime-reftime
+		valtime_offset:long_name = "hours from reference time" ;
+		valtime_offset:units = "hours" ;
+
+	int	num_sites;
+		num_sites:long_name = "actual number of sites";
+
+        int     site_list(max_site_num);
+                site_list:long_name = "forecast site list";
+                site_list:_FillValue = -99999;
+
+	float	lat(max_site_num);
+                lat:long_name = "latitude";
+                lat:_FillValue = -99999.f;
+
+	float	lon(max_site_num);
+                lon:long_name = "longitude";
+                lon:_FillValue = -99999.f;
+
+	float	elev(max_site_num);
+                elev:long_name = "elevation";
+		elev:units = "meters";
+                elev:_FillValue = -99999.f;
+
+        float   level(level) ;
+                level:long_name = "level" ;
+                level:units = "hectopascals" ;
+
+
+	float	dswrf_sfc(record, max_site_num) ;
+		dswrf_sfc:long_name = "downward short wave radiation flux at surface" ;
+		dswrf_sfc:units = "W/m2" ;
+		dswrf_sfc:interpolation_method = "bilinear" ;
+		dswrf_sfc:_FillValue = -9999.f ;
+
+
+        float   T_sfc(record, max_site_num) ;
+                T_sfc:long_name = "temperature at surface" ;
+                T_sfc:units = "degK" ;
+                T_sfc:interpolation_method = "bilinear" ;
+                T_sfc:_DeflateLevel = 1 ;
+                T_sfc:_FillValue = -9999.f ;
+
+
+        float   RH(record, level, max_site_num) ;
+                RH:long_name = "relative humidity" ;
+                RH:units = "percent" ;
+                RH:interpolation_method = "bilinear" ;
+                RH:_DeflateLevel = 1 ;
+                RH:_FillValue = -9999.f ;
+
+
+// global attributes:
+		:history = "created by grib2site" ;
+
+}

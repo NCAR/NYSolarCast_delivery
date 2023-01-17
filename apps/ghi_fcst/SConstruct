@@ -1,0 +1,39 @@
+
+import os
+env = Environment(
+   #CPPPATH=["/usr/local/include","/home/solar_energy/include","/usr/local/netcdf4/include","/usr/local/hdf5/include", os.environ["LOCAL_INC_DIR"]], 
+   CPPPATH=["/usr/local/include","/usr/local/netcdf4/include","/usr/local/hdf5/include", os.environ["LOCAL_INC_DIR"]],
+   CCFLAGS=os.environ["LOCAL_CCFLAGS"], 
+   LIBPATH=["/d1/wind_energy/github/wind_energy/lib","/usr/local/netcdf/lib","/usr/local/hdf5/lib","/usr/local/szip/lib",os.environ["LOCAL_LIB_DIR"]])
+
+env["INSTALLPATH"] = "~/bin"
+    
+GHIFcst = env.Program("ghi_fcst", 
+                       ["Arguments.cc",
+                        "MainGHIFcst.cc",
+                        "FcstProcessor.cc",
+                        "ObsReader.cc",
+                        "ObsMgr.cc",
+                        "NwpReader.cc",
+                        "NwpMgr.cc",
+                        "SiteMgr.cc",
+                        "cdf_field_writer.cc"],
+                         LIBS=[ 
+                               "config++",
+                               "boost_filesystem",
+                               "boost_system",
+                               "cubist_interface",
+                               "ncfc",
+                               "netcdf_c++4",                               
+                               "netcdf",
+                               "hdf5_hl",                               
+                               "hdf5",
+                               "log",
+                               "z",
+                               "m",
+                               "sz",
+                               "dl"], LINKFLAGS="--static")
+
+env.Install(env["INSTALLPATH"], "ghi_fcst")
+env.Alias("install", env["INSTALLPATH"])
+
