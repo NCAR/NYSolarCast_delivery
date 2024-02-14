@@ -34,9 +34,9 @@ UDUNITS2_XML_PATH=/glade/u/apps/ch/opt/udunits/2.2.26/intel/19.0.5/share/udunits
 4,9,14,19,24,29,34,39,44,49,54,59 * * * * run_chain.py run_download_nymeso_data.py run_nymeso_basic_and_shading_qc.py >& /dev/null  
 
 #
-# Average the nymeso data to 15min and convert to nc, upload to sftp server
+# Average the nymeso data to 15min and convert to nc
 #
-5,20,35,50 * * * * run_chain.py run_nymeso_15min_avg.py run_nymeso_csv_to_nc.py upload_obs_to_sftp.py >& /dev/null 
+5,20,35,50 * * * * run_chain.py run_nymeso_15min_avg.py run_nymeso_csv_to_nc.py >& /dev/null 
 
 #
 # Convert the Wrf Netcdf to NC input for Statcast and Produce the statcast forecast
@@ -54,20 +54,15 @@ UDUNITS2_XML_PATH=/glade/u/apps/ch/opt/udunits/2.2.26/intel/19.0.5/share/udunits
 48 3,4,5,6,7,8,9,10,11,12,13 * * * run_NWP_grid_blender.py >& /dev/null
 
 #
-# Upload day-ahead (NWP BLENDED) forecast to sftp site
+# Run the Statcast forecast and blend it back in with the NWP blended forecast
 #
-51 3 * * * upload_day_ahead_fcst_to_sftp.py >& /dev/null
-
-#
-# Run the Statcast forecast and blend it back in with the NWP blended forecast, upload to sftp server
-#
-7,22,37,52 5,6,7,8,9,10,11,12,13 * * * run_chain.py run_ghi_fcst.py run_NWP_Statcast_blender.py upload_blended_fcst_to_sftp.py >& /dev/null
+7,22,37,52 5,6,7,8,9,10,11,12,13 * * * run_chain.py run_ghi_fcst.py run_NWP_Statcast_blender.py >& /dev/null
 
 #
 # Run the power conversions
 #
-# Run the power conversion at distributed sites, do the regional zip power forecast and upload to sftp
-10 5,6,7,8,9,10,11,12,13 * * * run_power_fcst.py distributed 60 >& /dev/null ; run_pct_power_rollup.py >& /dev/null ; run_pct_power_region_rollup.py >& /dev/null ; upload_total_power_fcsts_to_sftp.py >& /dev/null 
+# Run the power conversion at distributed sites, do the regional zip power forecast
+10 5,6,7,8,9,10,11,12,13 * * * run_power_fcst.py distributed 60 >& /dev/null ; run_pct_power_rollup.py >& /dev/null ; run_pct_power_region_rollup.py >& /dev/null  
 # Run the power conversion at ProviderA Farms and convert to total power
 10,25,40,55 5,6,7,8,9,10,11,12,13 * * * run_power_fcst.py Farm_A1 15 >& /dev/null 
 10,25,40,55 5,6,7,8,9,10,11,12,13 * * * run_power_fcst.py Farm_A2 15 >& /dev/null 
@@ -81,12 +76,12 @@ UDUNITS2_XML_PATH=/glade/u/apps/ch/opt/udunits/2.2.26/intel/19.0.5/share/udunits
 10,25,40,55 5,6,7,8,9,10,11,12,13 * * * run_power_fcst.py Farm_B5 15 >& /dev/null
 10,25,40,55 5,6,7,8,9,10,11,12,13 * * * run_power_fcst.py Farm_B6 15 >& /dev/null  
 
-11,26,41,56 5,6,7,8,9,10,11,12,13 * * * run_chain.py run_pct_power_to_total_power.py upload_power_fcsts_to_sftp.py >& /dev/null
+11,26,41,56 5,6,7,8,9,10,11,12,13 * * * run_chain.py run_pct_power_to_total_power.py >& /dev/null
 
 #
 # Run the day ahead power conversions
 #
-50 3 * * * run_power_fcst_day_ahead.py distributed 60 >& /dev/null ; run_pct_power_rollup.py >& /dev/null ; run_pct_power_region_rollup.py >& /dev/null ; upload_day_ahead_total_power_fcsts_to_sftp.py >& /dev/null
+50 3 * * * run_power_fcst_day_ahead.py distributed 60 >& /dev/null ; run_pct_power_rollup.py >& /dev/null ; run_pct_power_region_rollup.py >& /dev/null 
 # Run the power conversion (day ahead) at Provider A farms and convert to total power
 50 3 * * * run_power_fcst_day_ahead.py Farm_A1 15 >& /dev/null 
 50 3 * * * run_power_fcst_day_ahead.py Farm_A2 15 >& /dev/null 
@@ -100,7 +95,7 @@ UDUNITS2_XML_PATH=/glade/u/apps/ch/opt/udunits/2.2.26/intel/19.0.5/share/udunits
 50 3 * * * run_power_fcst_day_ahead.py Farm_B5 15 >& /dev/null 
 50 3 * * * run_power_fcst_day_ahead.py Farm_B6 15 >& /dev/null 
 
-51 3 * * * run_chain.py run_pct_power_to_total_power.py upload_day_ahead_power_fcsts_to_sftp.py >& /dev/null
+51 3 * * * run_chain.py run_pct_power_to_total_power.py >& /dev/null
 
 #
 # Check that files are being produced in a timely manner
