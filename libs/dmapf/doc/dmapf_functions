@@ -1,0 +1,188 @@
+C ----------- The dmapf subroutines -----------------------------
+
+C Using an array REAL stcprm(15) of 15 parameters to specify  a
+C   grid on a conformal map projection, provides conversion of
+C   location and wind components from one coordinate system to
+C   the other.  Also provides infomation, at any given site, on
+C   gridsize, polar axis orientation (direction of North and
+C   Coriolis parameter value), and curvatures induced by the
+C   map projection for use in dynamic equations.
+
+C To use these subroutines in FORTRAN on arlrisc or arlrisc2,
+C   compile using xlf, and provide the library switch -l dmapf.
+
+C ------- First, specify the Map Projection Type -----------------
+
+C Projection initialization routines:
+C   pick exactly one of these routines to specify the map
+C   projection type.
+C Each routine encodes information into stcprm based on the
+C   Latitude and Longitude of a 'Reference Point' and between
+C   zero and two 'Anchor Points'.  The reference point is the
+C   point at which map distortion is minimal (gradient of grid
+C   size unit is zero), and which is as far as possible from the
+C   cut which is necessary to lay out cylinders (Mercator
+C   projection) and cones (Lambert Conic conformal projections)
+C   out on the real plane.  Anchor Points are required for Oblique
+C   Mercator and Oblique Lambert Projections to identify the
+C   circle of minimum distortion at which the cylinder or cone
+C   is tangent to the globe.
+
+C call sobstr(stcprm, reflat,reflon)
+
+C      Oblique Stereographic projection.  Requires Latitude and
+C      Longitude of Reference Point.  Map is a stereographic
+C      projection of the Globe onto this tangent plane; minimal
+C      distortion exists at this reference point.
+
+C call stlmbr(stcprm, reflat,reflon)
+
+C      Standard (North Polar) Lambert Conformal Conic Projection.
+C      reflat is tangent latitude of the cone, reflon is mid
+C      longitude of unrolled cone (180 deg from Cut). Distortion
+C      is minimal along the tangent latitude.
+
+C    real function eqvlat(rflat1,rflat2)
+
+C      To be used in conjunction with stlmbr.  Yields the tangent 
+C      Latitude associated with a pair of reference latitudes.
+
+C call stcmap(stcprm, tnglat,reflon)
+
+C      same as stlmbr.  Entry point included for compatibility
+C      with earlier version.
+
+C call stvmrc(stcprm, r_lat,r_long)
+
+C      Transverse Mercator Projection.  Requires Latitude and
+C      Longitude of a reference point.  This is a Mercator-type
+C      projection onto a cylinder tangent to the Meridian through
+C      the reference point, rather than tangent to the Equator.
+C      The cut in the cylinder occurs 180 degrees away from the
+C      reference point.  In the event that the reference point is 
+C      the North or South pole, r_long defines the tangent
+C      Meridian.  Distortion is minimal along the tangent
+C      Meridian.
+
+C call sobmrc(stcprm, r_lat, r_long, an_lat, an_lng)
+
+C      Oblique Mercator Projection.  Requires latitude and
+C      Longitudes of a reference point (r_lat,r_long) and an
+C      Anchor Point (an_lat,an_long).  A Mercator type projection
+C      onto the cylinder which is tangent to the Great Circle
+C      defined by the two points.  The cylinder is cut at the
+C      point 180 degrees from the reference point.  Distortion
+C      is minimal along the great circle.
+
+C call soblmb(stcprm, r_lat,r_long, a_lat1,a_lon1, a_lat2,a_lon2)
+
+C      Oblique Lambert Projection.  Requires Latitude and
+C      Longitudes of three points on a tangent small circle.
+C      Distortion is minimal along the tangent small circle.
+C      rlat,rlong represents the reference point, 180 deg away
+C      from the cut.  This rare projection is included for
+C      completeness; all other projections can be viewed as
+C      specialized forms of this one.
+
+C ---- second, specify the scale and orientation -----------------
+
+C  Scale setting routines: after the map projection type has been
+C      specified by one of the above, the scale, orientation and
+C      origin of the grid must be initialized by either of the
+C      following routines:
+
+C call stcm1p(stcprm, p_x, p_y, p_lat, p_lon,
+C               xlatsp, xlonsp, gridsz, orient)
+
+C      One-Point scale setting routine.  Establishes grid
+C      parameters so that grid point (p_x,p_y) will be pinned to
+C      geographic location (lat,long) = (p_lat,p_lon), while at
+C      the Scaling Point (lat,long) = (xlatsp,xlonsp), one grid unit
+C      is 'gridsz' km., and the y-axis is 'orient' degrees West of
+C      North. 
+      
+C call stcm2p(stcprm, p_x1, p_y1, p_lat1, p_lon1,
+C               p_x2, p_y2, p_lat2, p_lon2)
+
+C      Two-Point scale setting routine. Establishes grid
+C      parameters so that grid point (p_x1,p_y1) will be pinned to
+C      geographic location (lat,long) = (p_lat1,p_lon1), while grid
+C      point (p_x2,P_y2) will be pinned to geographic location
+C      (lat,long) = (p_lat2,p_lon2).
+
+C ------ third, use the parameter settings in stcprm ----------
+C ------------ to perform desired conversions -----------------
+
+C call cll2xy(stcprm, xlat,xlong, x,y)
+
+C      converts the geographic location (xlat,xlong) to the grid
+C      coordinates (x,y)
+
+C call cxy2ll(stcprm, x,y, xlat,xlong)
+
+C      converts the grid location (x,y) to the geographic location
+C      (lat,long) = (xlat,xlong).
+
+C function cgszll(stcprm, xlat,xlong)
+C function cgszxy(stcprm, x,y)
+
+C      returns the size of a grid unit, in kilometers, at the
+C      specified location, which may be given as latitude and
+C      longitude (for cgszll), or grid coordinates (x,y) (for
+C      cgszxy).
+
+C call cc2gll(stcprm, alat,along, ue,vn, ug,vg)
+C call cc2gxy(stcprm, x,y, ue,vn, ug,vg)
+
+C      At any given location, provided in either lat-long or
+C      grid x-y coordinates, as indicated, converts compass
+C      (c) wind components ue,vn into grid (g) wind
+C      components ug,vg and returns them.  ue is East and vn
+C      is North wind component; ug is component in x- direction
+C      and vg is component in y- direction.
+
+C call cg2cll(stcprm, alat,along, ug,vg, ue,vn)
+C call cg2cxy(stcprm, x,y, ug,vg, ue,vn)
+
+C      Same as the cc2g routines, except converts from the grid
+C      components ug,vg and returns the compass wind components
+C      ue and vn.
+
+C     On 3/9/99, changes were made to the cc2g.. and cg2c.. routines
+C     to allow ug,vg and ue,vn to share the same storage without
+C     interfering with other
+
+C call cpolll(stcprm, alat,along, enx,eny,enz)
+C call cpolxy(stcprm, x,y, enx,eny,enz)
+
+
+C      At any given location, provided in either lat-long or
+C      grid x-y coordinates, as indicated, returns the x-, y-,
+C      and z- components of a unit vector aligned with the Earth's
+C      axis in the North direction.  enx and eny indicate the
+C      direction of North, while enz = sin(alat) is proportional
+C      to the Coriolis parameter.  There are no equivalent
+C      routines to provide the same information in compass
+C      coordinates; enz would be unchanged, and the direction of
+C      North would be known.
+
+C call ccrvll(stcprm, alat,along, gx, gy)
+C call ccrvxy(stcprm, x,y, gx, gy)
+
+C      At any given location, provided in either lat-long or
+C      grid x-y coordinates, as indicated, returns the x- and y-
+C      components gx,gy of a vector describing the apparent 
+C      curvature in grid coordinates of a geodesic.  This
+C      information is used in a portion of the momentum terms of
+C      non-linear equations of motion.
+
+C ---------------------------------------------------------------
+C The following routines are not normally called by the user, but
+C      perform services for the other routines.  The user should
+C      avoid using these names for Functions or Subroutines:
+
+C Subroutines basg2m, basm2g, cgrnll, cgrnxy, geo_ll, ll_geo,
+C             map_xe, map_xy, mpstrt, proj_3d, x_prod, xe_xy,
+C             xy_map, xy_xe, and
+
+C Functions xpabva, atnabv, csabva, lnabva, snabva.

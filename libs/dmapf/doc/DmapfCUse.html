@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!-- InstanceBegin template="/Templates/arl.dwt" codeOutsideHTMLIsLocked="false" -->
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<!-- #BeginEditable "doctitle" -->
+  <title>NOAA ARL - Using the Dmapf Routines</title>
+<!-- #EndEditable -->
+  <link href="nav.css" rel="stylesheet" type="text/css">
+  <script language="JavaScript1.2" type="text/javascript">
+<!--
+//------------------------------------------------------
+// Script to load specific css documents
+//------------------------------------------------------
+if(document.layers) {  //Netscape 4
+	document.write('<link href=\"/ns4.css\" type=\"text/css\" rel=\"stylesheet\">');
+
+} 
+//------------------------------------------------------
+// Script to load drop down menus
+//------------------------------------------------------
+function fwLoadMenus() {
+  if (window.fw_menu_0) return;
+
+  window.fw_menu_0 = new Menu("root",288,17,"Verdana, Arial, Helvetica, sans-serif",11,"#000000","#ffffff","#f5f5f5","#336699");
+  fw_menu_0.addMenuItem("Headquarters","location='/ss/'");
+  fw_menu_0.addMenuItem("Surface Radiation Research Branch","location='http://www.srrb.noaa.gov/'");
+  fw_menu_0.addMenuItem("Atmospheric Sciences Modeling Division","location='http://www.epa.gov/asmdnerl/'");
+  fw_menu_0.addMenuItem("Atmospheric Turbulence and Diffusion Division","location='http://www.atdd.noaa.gov/'");
+  fw_menu_0.addMenuItem("Field Research Division","location='http://www.noaa.inel.gov/'");
+  fw_menu_0.addMenuItem("Special Operations and Research Division","location='http://wwwsordx.nv.doe.gov/'");
+  fw_menu_0.fontWeight="bold";
+  fw_menu_0.hideOnMouseOut=true;
+
+  window.fw_menu_1 = new Menu("root",140,17,"Verdana, Arial, Helvetica, sans-serif",11,"#000000","#ffffff","#f5f5f5","#336699");
+  fw_menu_1.addMenuItem("READY","location='/ready.html'");
+  fw_menu_1.addMenuItem("Homeland Security","location='/hls/'");
+  fw_menu_1.addMenuItem("ETOS Tower Data","location='http://raman.atdd.noaa.gov/'");
+  fw_menu_1.addMenuItem("Data","location='/NOAAServer/'");
+  fw_menu_1.addMenuItem("FAQ","location='/faq/'");
+  fw_menu_1.addMenuItem("Outreach","location='/outreach.html'");
+  fw_menu_1.fontWeight="bold";
+  fw_menu_1.hideOnMouseOut=true;
+
+  window.fw_menu_2 = new Menu("root",190,17,"Verdana, Arial, Helvetica, sans-serif",11,"#000000","#ffffff","#f5f5f5","#336699");
+  fw_menu_2.addMenuItem("Research Overview","location='/research/'");
+  fw_menu_2.addMenuItem("Weather & Air Quality","location='/research/waq/'");
+  fw_menu_2.addMenuItem("Coastal and Ocean Resources","location='/research/coastal/'");
+  fw_menu_2.addMenuItem("Climate","location='/research/climate/'");
+  fw_menu_2.addMenuItem("Emergency Assistance","location='/research/hls/'");
+  fw_menu_2.fontWeight="bold";
+  fw_menu_2.hideOnMouseOut=true;
+
+  window.fw_menu_3 = new Menu("root",210,17,"Verdana, Arial, Helvetica, sans-serif",11,"#000000","#ffffff","#f5f5f5","#336699");
+  fw_menu_3.addMenuItem("ARL Core Capability Analysis","location='/corereview.html'");
+  fw_menu_3.addMenuItem("Recent news &amp; press releases","location='/whatsnew.html'");
+  fw_menu_3.addMenuItem("Activity Reports","location='/reference.html'");
+  fw_menu_3.addMenuItem("Milestones","location='/milestones.html'");
+  fw_menu_3.fontWeight="bold";
+  fw_menu_3.hideOnMouseOut=true;
+
+  window.fw_menu_4 = new Menu("root",330,17,"Verdana, Arial, Helvetica, sans-serif",11,"#000000","#ffffff","#f5f5f5","#336699");
+  fw_menu_4.addMenuItem("About us","location='/aboutarl.html'");
+  fw_menu_4.addMenuItem("Welcome Message","location='/intro.html'");
+  fw_menu_4.addMenuItem("Personnel","location='/personnel.html'");
+  fw_menu_4.addMenuItem("Publications & References","location='/reference.html'");
+  fw_menu_4.addMenuItem("Acronyms","location='/acronyms.html'");
+  fw_menu_4.addMenuItem("Seminars","location='/seminars/index.html'");
+  fw_menu_4.addMenuItem("Strategic plan","location='/stplan.html'");
+  fw_menu_4.addMenuItem("History","location='/history.html'");
+  fw_menu_4.addMenuItem("University Partners","location='/partners.html'");
+  fw_menu_4.addMenuItem("Web Cameras","location='/cameras.html'");
+  fw_menu_4.addMenuItem("NOAA ResearchNet","location='http://intranet.oar.noaa.gov'");
+  fw_menu_4.addMenuItem("Emergency Information for Employees of NOAA","location='https://www.emergency.noaa.gov'");
+  fw_menu_4.addMenuItem("Contact us","location='/ready/feedback.html'");
+  fw_menu_4.fontWeight="bold";
+  fw_menu_4.hideOnMouseOut=true;
+  fw_menu_4.writeMenus();
+
+} // fwLoadMenus()
+
+//-->
+  </script>
+  <script language="JavaScript1.2" src="fw_menu.js"></script>
+</head>
+<body bgcolor="#ffffff">
+<script language="JavaScript1.2">fwLoadMenus();</script>
+<noscript><!--Site can be viewed and used without the previous scripts,
+they only affect design/layout--></noscript>
+<table background="ext_header.jpg" border="0" cellpadding="0"
+ cellspacing="0" width="100%">
+<!--DWLayoutTable-->
+  <tbody>
+    <tr>
+<!-- InstanceBeginEditable name="Header" --> <td align="center"><img
+ src="arl_header.jpg" alt="ARL Banner" border="0" height="91"
+ width="760"></td>
+<!-- InstanceEndEditable --></tr>
+  </tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td align="center"><img name="popup" src="popup.gif"
+ usemap="#m_popup" alt="navigation bar" border="0" height="30"
+ width="760"><!-- fwtable fwsrc="navbar.png" fwbase="popup" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+      <map name="m_popup">
+      <area shape="rect" coords="20,6,78,25" href="/"
+ alt="NOAA Air Resources Laboratory Home">
+      <area shape="rect" coords="652,4,721,25" href="/personnel.html"
+ onmouseout="FW_startTimeout();"
+ onmouseover="window.FW_showMenu(window.fw_menu_0,469,122);"
+ alt="Divisions">
+      <area shape="rect" coords="476,5,618,25" href="/products.html"
+ onmouseout="FW_startTimeout();"
+ onmouseover="window.FW_showMenu(window.fw_menu_1,481,122);"
+ alt="Products and services">
+      <area shape="rect" coords="301,6,448,26" href="/research/"
+ onmouseout="FW_startTimeout();"
+ onmouseover="window.FW_showMenu(window.fw_menu_2,310,122);"
+ alt="Research projects">
+      <area shape="rect" coords="191,5,280,27" href="/whatsnew.html"
+ onmouseout="FW_startTimeout();"
+ onmouseover="window.FW_showMenu(window.fw_menu_3,200,122);"
+ alt="What's new">
+      <area shape="rect" coords="99,5,170,27" href="/aboutarl.html"
+ onmouseout="FW_startTimeout();"
+ onmouseover="window.FW_showMenu(window.fw_menu_4,103,122);"
+ alt="About us">
+      </map>
+      </td>
+      <td background="pulldwn_ext.gif" bgcolor="#ffffff" width="100%"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td colspan="5" align="center" bgcolor="#000099" height="2"><img
+ src="spacer.gif" alt="" height="1" width="2"></td>
+    </tr>
+    <tr>
+      <td class="boxnav" align="center" height="450" nowrap="nowrap"
+ valign="top" width="100"><!-- Begin Sidebar navigation --> <a
+ href="#sideNav" title="Click here to skip the side bar navigation"></a>
+<!-- InstanceBeginEditable name="Highlights" -->
+      <table border="0" cellpadding="0" cellspacing="0" width="96">
+        <tbody>
+          <tr>
+            <td><img src="spacer.gif" alt="" border="0" height="20"
+ width="2"></td>
+            <td><b><a href="/search/"><font color="#333399" size="2">Search</font></a></b></td>
+          </tr>
+          <tr>
+            <td colspan="2" bgcolor="#000000"><img src="spacer.gif"
+ alt="" border="0" height="1" width="1"></td>
+          </tr>
+          <tr>
+            <td><img src="spacer.gif" alt="" border="0" height="20"
+ width="2"></td>
+            <td><b><a
+ href="http://www8.nos.noaa.gov/survey/index.aspx?Location=arl"><font
+ color="#333399" size="2">Online Survey</font></a></b></td>
+          </tr>
+          <tr>
+            <td colspan="2" bgcolor="#000000"><img src="spacer.gif"
+ alt="" border="0" height="1" width="1"></td>
+          </tr>
+<!--tr>
+        				<td colspan="2" align="center" height="32" width="96" class="menuhead">Highlights</td>
+		  </tr>
+        		<tr>
+        				<td colspan="2" align="left" height="21"> <img src="file:///C|/Documents%20and%20Settings/Glenn_2/My%20Documents/ARL%20Work/webpages/images/pntr.gif" width="5" height="10" align="top">&nbsp;<b> <a href=""><font color="#333399" size="2">Highlight1</font></a></b> </td>
+		  </tr-->
+        </tbody>
+      </table>
+<!-- InstanceEndEditable --> <a name="sideNav"
+ title="End of Sub Theme Navigation"></a> </td>
+      <td bgcolor="#336699" width="2"><img src="spacer.gif" alt=""
+ height="1" width="2"></td>
+      <td bgcolor="#ffffff" width="6"><img src="spacer.gif" alt=""
+ height="1" width="6"></td>
+<!-- InstanceBeginEditable name="Content" --> <td valign="top"
+ width="100%"><!-- Begin main content section --> <a
+ href="#MainContent" title="Click here to skip main content"></a>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+          <tr>
+            <td> <br>
+            <h2 align="center">Using The Dmapf Routines (C)</h2>
+            <p>The Dmapf routines are an extension of the Cmapf
+routines to a general orientation of projection surface to the Earth's
+surface. The Cmapf routines are a library of C-language subroutines and
+functions which process geographic and dynamic data between grids and
+geographical coordinates on a family of conformal map projections.</p>
+            <p>The Cmapf routines deal only with the cases in which the
+projection surfaces are either axially aligned with the Earth's
+North-South axis, (in the case of the Mercator Cylindrical or the
+Lambert Conic Projection) or orthogonal to the Earth's axis (in the
+case of the Polar Stereographic Projection.</p>
+            <p>The Dmapf routines extend the Cmapf routines by allowing
+projection surfaces whose axes lie in the equatorial plane (transverse
+Mercator and Transverse Lambert) or in other directions (Oblique
+Stereographic, orthogonal to a diameter through any specified point on
+the Earth's surface). Oblique Mercator and Lambert projections are
+provided for, but rarely used.</p>
+            <p>Data characterizing the map projections and the grids on
+them is embedded in maparam structures. Note: in all cases, North
+latitudes will be given as positive degrees, South latitudes negative
+degrees, East longitudes positive degrees and West longitudes negative
+degrees.</p>
+            <hr>
+            <h3>Initializing (configuring) the maparam structure:</h3>
+            <dl>
+              <dt><b>Stage I - Selecting a Map Projection.</b></dt>
+              <dd>
+                <p>To initialize a map parameter (maparam) structure
+with a Conformal Polar Projection, use any one of the following
+subroutines:</p>
+                <ul>
+                  <li><b>Normal (aligned with Earth's axis) Projections</b>
+                    <ul>
+                      <li>#include cmapf.h</li>
+                      <li>maparam stcprm;</li>
+                      <li>double reflat,reflon,tnglat;<br>
+                        <br>
+                      </li>
+                      <li>stlmbr(&amp;stcprm, reflat, reflon);<br>
+or equivalently</li>
+                      <li>stcmap(&amp;stcprm, tnglat, reflon);<br>
+                        <br>
+                      </li>
+                    </ul>
+                    <p>for a normal (polar) Lambert projection with
+reflat being the latitude at which the projection plane, cone, or
+cylinder is tangent to the Earth, while reflon is the longitude of some
+point 180 degrees away from the cut. This operates exactly the same as
+in the Cmapf routines.</p>
+                  </li>
+                  <li><b>Transverse (aligned with an equatorial
+diameter) Projections</b>
+                    <ul>
+                      <li>#include cmapf.h</li>
+                      <li>maparam stcprm;</li>
+                      <li>double r_lat,r_long;<br>
+                        <br>
+                      </li>
+                      <li>stvmrc(&amp;stcprm, r_lat, r_long);<br>
+                        <br>
+                      </li>
+                    </ul>
+                    <p>will define a transverse Mercator projection
+onto a cylinder tangent to the Earth along a meridian. The meridian
+passes through the <i>reference point</i> r_lat,r_long, and has the
+least distortion near that meridian. The cylinder is cut half way from
+the reference point, and the cut is the projection of a great
+semi-circle, 180 degrees away from the r_lat latitude, extending to
+equatorial points 90 degrees removed from the r_long meridian.</p>
+                  </li>
+                  <li><b>Oblique (aligned with any other diameter)
+Projections:</b>
+                    <ul>
+                      <li>#include cmapf.h</li>
+                      <li>maparam stcprm;</li>
+                      <li>double
+r_lat,r_lon,an_lat,an_lon,a_lat1,a_lng1,a_lat2,a_lng2;<br>
+                        <br>
+                      </li>
+                      <li>sobstr(&amp;stcprm, r_lat,r_lon);</li>
+                      <li>sobmrc(&amp;stcprm, r_lat,r_lon,
+an_lat,an_lon);<br>
+or</li>
+                      <li>soblmb(&amp;stcprm, r_lat,r_lon,
+a_lat1,a_lng1, a_lat2,a_lng2);</li>
+                    </ul>
+                    <p>will define, respectively, the <i>oblique
+Stereographic</i>, <i>oblique Mercator</i>, and <i>oblique Lambert
+Conformal</i> projections. In each case, r_lat and r_lon are the
+latitude and longitude of the <i>reference point</i>, which is the
+point on the Earth at which this map's distortion is least (because the
+gradient of the scale is zero) and which is furthest from any cut.</p>
+                    <p>an_lat,an_lon, a_lat1,a_lng1, a_lat2,and a_lng2
+are latitudes and longitudes of <i>anchor points</i>, which inform the
+routines of the location of the tangent circles for the Mercator and
+Lambert projections, respectively. The reference point, together with
+one or two anchor points, define the circle at which the projection
+surface is tangent to the Earth.</p>
+                    <p>In the Stereographic case, the one point
+r_lat,r_long is the point where the projection plane is tangent to the
+Earth.</p>
+                    <p>In the Mercator case, two points define a great
+circle, at which the projection cylinder is tangent to the Earth. The
+reference and anchor points must be two different points.</p>
+                    <p>In the Lambert Conic Conformal case, three
+points are required to define a small circle at which the projection
+cone is tangent to the Earth's surface. The reference point and the
+anchor point(s) must be three distinct points.</p>
+                  </li>
+                </ul>
+                <p>The above routines allow for an extensive selection
+of projection types, but in practice, most projections will consist of
+the normal projections, the transverse Mercator, and the Oblique
+Stereographic.</p>
+                <p>Whichever of the above routines is selected, it will
+fill the structure "stcprm" with default data specifying the selected
+projection on the appropriate surface tangent to the globe at the
+indicated point or circle. If a cut is needed to lay the cone or
+cylinder out flat on the plane, it will be made opposite to (the
+maximum distance from) the reference point.</p>
+              </dd>
+              <dt><b>Stage II - Laying out a grid on a selected map
+projection.</b></dt>
+              <dd>
+                <p>This stage configures the maparam structure with the
+information to locate the points of the grid on the selected map
+projection selected in Stage I above. Two alternative means are
+provided: Either One-Point specification or Two-Point specification.</p>
+                <ol type="a">
+                  <li><b>Two-Point Specification:</b>
+                    <ul>
+                      <li>maparam stcprm;</li>
+                      <li>double x1,y1,xlat1,xlon1, x2,y2,xlat2,xlon2;<br>
+                        <br>
+                      </li>
+                      <li>stcm2p(&amp;stcprm, x1,y1,xlat1,xlon1,
+x2,y2,xlat2,xlon2);</li>
+                    </ul>
+                    <p>causes stcprm to be configured so that the grid
+point with grid coordinates x1,y1 will be located on the map at
+latitude xlat1, longitude xlon1, while x2,y2 is located on the map at
+xlat2, xlon2. The two points must be different. This specification
+locates all other grid points, assumed arranged on the projection with
+equal spacing in the x- and y- directions.</p>
+                    <p>The two points will often be opposite corners of
+the intended grid, but many times a different selection will be
+preferred. For example, in a Mercator projection, it will often be
+better to select two points of the same latitude or the same longitude,
+to ensure exact N-S orientation of the grid. Alternatively, several
+subgrids of an overall grid may be guaranteed compatibility by using
+the same two points of the overall grid, even if neither of the points
+lie in the subgrid at all.</p>
+                  </li>
+                  <li><b>One-Point Specification:</b>
+                    <ul>
+                      <li>maparam stcprm;</li>
+                      <li>double x1,y1,xlat1,xlon1, scalat,scalon,
+gsize,orient;<br>
+                        <br>
+                      </li>
+                      <li>stcm1p(&amp;stcprm, x1,y1,xlat1,xlon1,
+scalat,scalon, gsize,orient);</li>
+                    </ul>
+                    <p>causes stcprm to be configured so that the grid
+point with grid coordinates x1,y1 will be located on the map at
+latitude xlat1, longitude xlon1. The remaining configuration
+information is provided at the scaling point whose latitude and
+longitude are scalat, scalon. At that point, and incidentally every
+point on the latitude circle scalat, the size of a grid cell is gsize
+in both the x- and y- directions. Finally, at the scaling point, the
+y-lines of the grid make an angle of "orient" degrees clockwise (East)
+of the scalon meridian.</p>
+                    <p>The x1,y1 coordinates can be thought of as
+"pinning" that grid point to the map at xlat1,xlon1, the gsize value
+can be thought of as "zooming" the grid in and out until the desired
+size is attained, and the "orient" specification can be thought of as
+rotating the grid about the pinned point until the y-axis through the
+scaling point has the desired bearing.</p>
+                    <p>Frequently, a grid will be published as having
+an "lov" value of a longitude intended to be vertical; for such grids,
+scalon=lov and orient=0.</p>
+                  </li>
+                </ol>
+              </dd>
+            </dl>
+            <hr>
+            <h3>Using the configured maparams:</h3>
+            <dl>
+              <dt><b>Coordinate transforms:</b></dt>
+              <dd>
+                <ul>
+                  <li>maparam stcprm;</li>
+                  <li>double xlat,xlon, x,y;<br>
+                    <br>
+                  </li>
+                  <li>cll2xy(&amp;stcprm, xlat,xlon, &amp;x,&amp;y);</li>
+                </ul>
+                <p>will return grid coordinates x,y according to the
+grid configured as stcprm, for the point whose latitude and longitude
+are xlat,xlon. Longitude values are adjusted to fit between reflon-180.
+and reflon+180., so that nearby points on the globe remain nearby
+points on the map, unless they straddle the "cut" at longitude
+reflon+180., and find themselves on opposite edges of an unrolled
+cylinder.</p>
+                <ul>
+                  <li>maparam stcprm;</li>
+                  <li>double xlat,xlon, x,y;<br>
+                    <br>
+                  </li>
+                  <li>cxy2ll(&amp;stcprm, x,y, &amp;xlat,&amp;xlon);</li>
+                </ul>
+                <p>will return latitude and longitude parameters
+according to the grid configured as stcprm, for the point whose grid
+coordinates are x,y. Longitude values will be returned in the range
+from -180. to +180.</p>
+                <p>If the point x,y corresponds to the North or South
+Pole, where longitude is undefined, the returned longitude will be 180.
+for the North Pole, 0. for the South Pole, conforming to the WMO
+standard for reporting winds there. (In an earlier version of CMAPF,
+the value of reflon was returned at the poles.)</p>
+              </dd>
+              <dt><b>Wind Vector transforms:</b></dt>
+              <dd>
+                <ul>
+                  <li>maparam stcprm;</li>
+                  <li>double xlat,xlon, ue,vn, ug,vg;<br>
+                    <br>
+                  </li>
+                  <li>cc2gll(&amp;stcprm, xlat,xlon, ue,vn,
+&amp;ug,&amp;vg);<br>
+and</li>
+                  <li>cg2cll(&amp;stcprm, xlat,xlon, ug,vg,
+&amp;ue,&amp;vn);</li>
+                </ul>
+                <p>will convert the East- and North- components ue,vn
+(Cartographic components) of the wind to and from components ug,vg of
+the wind in the x- and y- directions of the grid (Grid components). The
+first transfers from cartographic components to grid components, the
+second does the reverse. In both cases, the wind is that observed at
+the specified cartographic coordinates xlat,xlon.</p>
+                <p>At the poles (xlat=90. or xlat= -90.), the direction
+of "North", which determines the meaning of ue and vn, is based on the
+nominal value of longitude. The direction of North will agree with that
+perceived by an observer stationed a short distance away on the xlon
+meridian. Thus, if xlat,xlon = 90.,-70., "North" will be assigned to
+the direction of the 110E meridian.</p>
+                <ul>
+                  <li>cc2gxy(&amp;stcprm, x,y, ue,vn, &amp;ug,&amp;vg);<br>
+and</li>
+                  <li>cg2cxy(&amp;stcprm, x,y, ug,vg, &amp;ue,&amp;vn);</li>
+                </ul>
+                <p>will convert the East- and North- components ue,vn
+(Cartographic components) of the wind to and from components ug,vg of
+the wind in the x- and y- directions of the grid (Grid components). The
+first transfers from cartographic components to grid components, the
+second does the reverse. In both cases, the wind is that observed at
+the specified grid coordinates x,y.</p>
+                <p>If x,y refers to the North or to the South pole, the
+orientation of "North" is defined according to World Meteorological
+Organization (WMO) code 878. The direction of "North" is that of the
+Greenwich meridian, which is the equivalent of using xlat=90.,xlon=180.
+for the North Pole, and xlat=-90.,xlon=0. for the South Pole.</p>
+                <ul>
+                  <li>cw2gll(&amp;stcprm, xlat,xlon, ue,vn,
+&amp;ug,&amp;vg);</li>
+                  <li>cg2wll(&amp;stcprm, xlat,xlon, ug,vg,
+&amp;ue,&amp;vn);</li>
+                  <li>cw2gxy(&amp;stcprm, x,y, ue,vn, &amp;ug,&amp;vg);<br>
+and</li>
+                  <li>cg2wxy(&amp;stcprm, x,y, ug,vg, &amp;ue,&amp;vn);</li>
+                </ul>
+                <p>perform the same services as the above transforms,
+except that within 1 degree (111km or 60nm) or either pole, ue and vn
+are interpreted according to WMO code 878 above. In an earlier version
+of CMAPF, this was the definition of the c2g and g2c routines, above.</p>
+              </dd>
+              <dt><b>Gridsize Evaluation:</b></dt>
+              <dd>
+                <ul>
+                  <li>maparam stcprm;</li>
+                  <li>double gsize,xlat,xlon,x,y;<br>
+                    <br>
+                  </li>
+                  <li>gsize = cgszll(&amp;stcprm, xlat,xlon);<br>
+and</li>
+                  <li>gsize = cgszxy(&amp;stcprm, x,y);</li>
+                </ul>
+                <p>return the size, in kilometers, of a grid cell at
+the indicated point.</p>
+              </dd>
+              <dt><b>Curvature Vector:</b></dt>
+              <dd>
+                <ul>
+                  <li>maparam stcprm;</li>
+                  <li>double x,y,gx,gy,xlat,xlon;<br>
+                    <br>
+                  </li>
+                  <li>ccrvxy (&amp;stcprm, x,y, &amp;gx,&amp;gy);<br>
+and</li>
+                  <li>ccrvll (&amp;stcprm, xlat,xlon, &amp;gx,&amp;gy);</li>
+                </ul>
+                <p>return, in gx and gy, the logarithmic gradient of
+the scale. This vector represents the curvature on the Earth of a
+straight line segment on the map. Units are in radians per kilometer on
+the Earth's surface. See the paper for details on usage in equations.</p>
+              </dd>
+              <dt><b>North Polar Vector evaluations:</b></dt>
+              <dd>
+                <ul>
+                  <li>maparam stcprm;</li>
+                  <li>double x,y, xlat,xlon, enx,eny,enz;<br>
+                    <br>
+                  </li>
+                  <li>cpolxy (&amp;stcprm, x,y,
+&amp;enx,&amp;eny,&amp;enz);<br>
+and</li>
+                  <li>cpolll (&amp;stcprm, xlat,xlon,
+&amp;enx,&amp;eny,&amp;enz);</li>
+                </ul>
+                <p>return, in enx, eny, and enz the components of the
+direction of the Earth's axis. Components enx and eny provide the local
+direction of North in grid coordinates, while enz is proportional to
+the local Coriolis parameter.</p>
+              </dd>
+              <dt><b>Other Routines:</b></dt>
+              <dd>
+                <p>In addition to the functions defined above for the
+end user, there are also a number of functions that assist the end-user
+routines, but are not generally used by the end user. These functions
+include</p>
+                <dl>
+                  <dt>functions returning void:</dt>
+                  <dd>mpstrt, basm2g, basg2m, proj_3d, geo_ll, ll_geo,
+xy_map, map_xy, map_xe, xe_map, xe_xy, xy_xe, cgrnll and cgrnxy</dd>
+                  <dt>functions returning double:</dt>
+                  <dd>x_prod, cml2xy, csabva, snabva, lnabva, xpabva
+and atnabv</dd>
+                </dl>
+                <p>These function names should not be used in code
+created by the end user.</p>
+              </dd>
+            </dl>
+            <br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a name="MainContent" title="End of Main Content"></a> </td>
+<!-- Begin right bufferzone --><!-- InstanceEndEditable --> <td
+ width="12"><br>
+      </td>
+    </tr>
+<!--tr class="footer"> 
+  	<td width="100" bgcolor="#FFFFFF" height="2"><img src="/images/spacer.gif" width="2" height="1" alt=""></td>
+	<td bgcolor="#336699" width="2"><img src="/images/spacer.gif" width="2" height="1" alt=""></td>
+	<td align="center" colspan="3" height="2" bgcolor="#000099"><img src="/images/spacer.gif" width="2" height="1" alt=""></td>
+</tr>
+<tr class="footer"> 
+  	<td width="100" bgcolor="#FFFFFF" height="10"><img src="/images/spacer.gif" width="2" height="10" alt=""></td>
+	<td bgcolor="#336699" width="2"><img src="/images/spacer.gif" width="2" height="1" alt=""></td>
+	<td bgcolor="#ffffff" width="6"><img src="/images/spacer.gif" width="6" height="1" alt=""></td>
+	<td align="center" colspan="2" height="10"> 
+		<font size="2"><a href="/">Home</a>&nbsp;
+		| &nbsp; <a href="/aboutarl.html">About us</a>&nbsp;  
+		| &nbsp; <a href="/whatsnew.html">What's new</a>&nbsp; 
+		| &nbsp; <a href="/research/index.html">Research projects</a>&nbsp;
+		</font>  
+	</td>
+</tr-->
+  </tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="#000099" height="4"><img src="spacer.gif" alt=""
+ height="4"></td>
+    </tr>
+  </tbody>
+</table>
+<table background="foot_ext.jpg" border="0" cellpadding="0"
+ cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td align="center" height="72"> <img name="btm_lnk"
+ src="foot_lnk.jpg" usemap="#m_btm_lnk" alt="Link footer" border="0"
+ height="72" width="760"><!-- fwtable fwsrc="btm_lnk.png" fwbase="btm_lnk" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" --> <map
+ name="m_btm_lnk">
+      <area shape="poly" coords="518,9,609,9,609,61,518,61,518,9"
+ href="http://www.arl.noaa.gov/" alt="Air Resources Laboratory">
+      <area shape="poly" coords="328,15,431,15,431,56,328,56,328,15"
+ href="http://www.oar.noaa.gov/" alt="NOAA Research">
+      <area shape="poly"
+ coords="171,36,173,25,179,16,188,10,199,8,211,10,220,16,226,25,228,36,226,47,220,56,211,62,199,64,188,62,179,56,173,47,171,36,171,36"
+ href="http://www.noaa.gov/" alt="NOAA">
+      </map>
+      </td>
+<!--td width="100%" bgcolor="#0066CC"></td--></tr>
+  </tbody>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td bgcolor="#000099" height="4"><img src="spacer.gif" alt=""
+ height="4"></td>
+    </tr>
+  </tbody>
+</table>
+<!-- InstanceBeginEditable name="footer" -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!--DWLayoutTable--> <tbody>
+    <tr class="footer">
+      <td width="5"><br>
+      </td>
+      <td> <font size="1"><a href="http://www.noaa.gov/privacy.html">Privacy
+Policy</a> | <a href="/disclaim.html">Disclaimer</a></font> </td>
+      <td align="right"> <font size="1"><a
+ href="mailto:webmaster@www.arl.noaa.gov">webmaster@www.arl.noaa.gov</a></font>
+      </td>
+    </tr>
+    <tr class="footer">
+      <td width="5"><br>
+      </td>
+      <td> <font size="1"><a href="http://www.doc.gov">DOC</a> / <a
+ href="http://www.noaa.gov">NOAA</a> / <a
+ href="http://www.oar.noaa.gov">OAR</a> / <a
+ href="http://www.arl.noaa.gov/">ARL</a></font> </td>
+      <td align="right"> <font size="1">Last Updated:&nbsp;<!-- #BeginDate format:Am3 -->
+10/25/2004<!-- #EndDate --> </font> </td>
+      <td width="12"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- InstanceEndEditable --><!-- InstanceEnd -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+import os
+env = Environment(CPPPATH="include", LIBPATH=[os.environ["LOCAL_LIB_DIR"]], CCFLAGS=os.environ["LOCAL_CCFLAGS"])
+    
+env.Library("log", [
+    "log/log.cc"])
+
+env.Install(env["LIBPATH"], "liblog.a")
+
+install_include = "%s/log" % os.environ["LOCAL_INC_DIR"]
+env.Install(install_include, "include/log/log.hh")
+
+env.Alias("install", [env["LIBPATH"], install_include])
+env.Alias("install_include", install_include)
+
+
+
+
+

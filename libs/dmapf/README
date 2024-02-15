@@ -1,0 +1,21 @@
+January, 2002 
+
+This code was downloaded from the following site:
+
+	http://www.arl.noaa.gov/ss/models/cmapf.html
+
+and made into a separate module using RAP makefiles. 
+
+The code is Version 2.0 of the cmapf library 
+(Conformal Map Function).  Version 1.0 is called
+cmapf and Version 2.0 is called dmapf.
+
+The algorithms are described in an article, Conformal Map
+Transformations for Meteorological Modelers, by Albion D. Taylor,
+published in the February, 1997 issue of Computers and Geosciences 
+(v23, no 1). 
+
+See ruc40.cc in src/dmapf for an example of how to use the software in
+conjuntion with the ruc40 model. See src/dmapf/README for
+documentation on how to call the routines. It's specified in Fortran
+but the translation to C is straightforward.

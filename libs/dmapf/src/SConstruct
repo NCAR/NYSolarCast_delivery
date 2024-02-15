@@ -1,0 +1,40 @@
+
+import os
+
+# Note that LOCAL_INC_DIR must contain the netcdf include files
+env = Environment(CPPPATH=[os.environ["NETCDF_INC_DIR"], os.environ["LOCAL_INC_DIR"], "include/dmapf", os.environ["RAL_INC_DIR"]], LIBPATH=[os.environ["LOCAL_LIB_DIR"], os.environ["RAL_LIB_DIR"]], CCFLAGS=os.environ["RAL_CFLAGS"])
+    
+env.Library("dmapf", [
+  "dmapf/cmapf_model.cc",
+  "dmapf/basegm.c",
+  "dmapf/cmapf.c",
+  "dmapf/eqvlat.c",
+  "dmapf/geog_ll.c",
+  "dmapf/kcllxy.c",
+  "dmapf/limmath.c",
+  "dmapf/ll_geog.c",
+  "dmapf/lmbrt.c",
+  "dmapf/map_xy.c",
+  "dmapf/mapstart.c",
+  "dmapf/obmrc.c",
+  "dmapf/obqlmbrt.c",
+  "dmapf/obstr.c",
+  "dmapf/proj_3d.c",
+  "dmapf/stcm1p.c",
+  "dmapf/stcm2p.c",
+  "dmapf/trnsmrc.c",
+  "dmapf/xy_map.c",
+  "dmapf/vector_3.c"])
+
+#env.Program("dmapf/test_ruc20", ["dmapf/test_ruc20.cc"], LIBS=["dmapf"])
+  
+
+env.Alias("install", env.Install(dir=os.environ["LOCAL_LIB_DIR"], source="libdmapf.a"))
+env.Alias("install", env.Install(dir="%s/dmapf" % os.environ["LOCAL_INC_DIR"], source=["include/dmapf/cmapf.h", "include/dmapf/cmapf_model.hh", "include/dmapf/limmath.h", "include/dmapf/vector_3.h"]))
+          
+
+
+
+
+
+

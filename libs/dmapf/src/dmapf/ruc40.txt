@@ -1,0 +1,110 @@
+
+
+C***********************************************************************
+C*************************** M A P S C O N *****************************
+C***********************************************************************
+C**
+C**  NAME:  MAPSCON  
+C**
+C**
+C**
+C**  PURPOSE
+C**  =======
+C**  PARAMETERS USED THROUGHOUT THE MAPS MODEL
+C**
+C**
+C**
+C**  VARIABLES
+C**  =========
+C**  LABEL           TYPE ................DESCRIPTION..................
+
+C**  DX_P              R  GRID INTERVAL (M): X-DIRECTION
+C**  DY_P              R  GRID INTERVAL (M): Y-DIRECTION
+C**
+C**
+C**  I_POLE_P          R  X INDEX OF NORTH POLE (ND)
+C**
+C**
+C**  J_POLE_P          R  Y INDEX OF NORTH POLE (ND)
+C**
+C**
+C**  LAMBERT_P         I  LAMBERT CONFORMAL MAP PROJECTION
+C**  LAT_LL_P          R  LAT OF LOWER-LEFT CORNER OF X-Y GRID (DEG)
+C**  LAT_TAN_P         R  LATITUDE AT LAMBERT CONFORMAL PROJECTION
+C**                         IS TRUE (DEG)
+C**  LAT_TRUE_P        R  LATITUDE AT WHICH X-Y SCALE IS TRUE (DEG)
+C**  LAT_UR_P          R  LAT OF UPPER-RIGHT CORNER OF X-Y GRID (DEG)
+C**  LON_LL_P          R  LON OF LOWER-LEFT CORNER OF X-Y GRID (DEG)
+C**  LON_UR_P          R  LON OF UPPER-RIGHT CORNER OF X-Y GRID (DEG)
+C**  LON_XX_P          R  MERIDIAN ALIGNED WITH CARTESIAN Y-AXIS(DEG)
+C**
+C**
+C**  NTER_P            I  NUMBER OF HIGH-RESOLUTION TERRAIN POINTS
+C**                         WITHIN DX_P IN A SINGLE DIMENSION
+C**  NXMAX_P           I  MAX # OF X GRID PTS
+C**  NXYMAX_P          I  MAX # OF HORIZ. GRID PTS
+C**  NX_P              I  HORIZONTAL GRID DIMENSION: X-DIRECTION
+C**  NYMAX_P           I  MAX # OF Y GRID PTS
+C**  NY_P              I  HORIZONTAL GRID DIMENSION :Y-DIRECTION
+C**  NZMAX_P           I  HYBRID SYSTEM
+C**  NZP_P             I  VERTICAL GRID DIMENSION: PRESSURE SYSTEM
+C**  NZP25_P           I  VERTICAL GRID DIMENSION: PRESSURE SYSTEM
+C**                         FOR 25-MB resolution, 1050-100 hPa
+C**  NXT_P             I
+C**  NZTN_P            I  VERTICAL GRID DIMENSION: HYBRID SYSTEM
+C**  NZS_P             I  VERTICAL GRID DIMENSION: SOIL LEVELS - model
+C**
+C**
+C**  PROJ_P            I  MAP PROJECTION
+C**
+C**
+C**
+C**  X_MAX_P           R  MAXIMUM X-COORDINATE (M)
+C**  X_MIN_P           R  MINIMUM X-COORDINATE (M)
+C**  X_POLE_P          R  X-COORDINATE OF NORTH POLE (M)
+C**
+C**
+C**  Y_MAX_P           R  MAXIMUM Y-COORDINATE (M)
+C**  Y_MIN_P           R  MINIMUM Y-COORDINATE (M)
+C**  Y_POLE_P          R  Y-COORDINATE OF NORTH POLE (M)
+C**
+C**
+
+
+
+     PARAMETER ( NX_P       =  151           )
+      PARAMETER ( NY_P       =  113           )
+      PARAMETER ( NZP_P      =  8             )
+      PARAMETER ( NZP25_P    =  39            )
+      PARAMETER ( NZS_P      =  5             )
+      PARAMETER ( NZT_P      =  12            )
+      PARAMETER ( NZTN_P     =  40            )
+      PARAMETER ( NZ_SFC_P   =  1             )
+      PARAMETER ( DX_P       =  40635.25      )
+      PARAMETER ( DY_P       =  40635.25      )
+      PARAMETER ( NTER_P     =  INT(DX_P/10000.))
+      PARAMETER ( I_POLE_P   =  78.4507       )
+      PARAMETER ( J_POLE_P   =  350.971       )
+      PARAMETER ( LAMBERT_P  =  2             )
+      PARAMETER ( LAT_LL_P   =  16.2810       )
+      PARAMETER ( LON_LL_P   = -126.1378      )
+      PARAMETER ( LAT_UR_P   =  55.4818       )
+      PARAMETER ( LON_UR_P   = -57.3794       )
+      PARAMETER ( LAT_TAN_P  =  25.0          )
+      PARAMETER ( LAT_TRUE_P =  35.0          )
+      PARAMETER ( LON_XX_P   = -95.0          )
+      PARAMETER ( POLAR_P    =  1             )
+      PARAMETER ( PROJ_P     =  LAMBERT_P     )
+      PARAMETER ( RADDEG_P   =  0.017453292   )
+      PARAMETER ( ROTCON_P   =  max(float(2-proj_p),
+     1      0.422618)     )
+C       This expression gives 1 for polar stereo
+C        and sin (lat_tan_p) for lambert.
+      PARAMETER ( X_MAX_P    =  (NX_P-1)*DX_P )
+      PARAMETER ( X_MIN_P    =  0.0           )
+      PARAMETER ( Y_MAX_P    =  (NY_P-1)*DY_P )
+      PARAMETER ( Y_MIN_P    =  0.0           )
+      PARAMETER ( X_POLE_P   =  (I_POLE_P-1)*DX_P)
+      PARAMETER ( Y_POLE_P   =  (J_POLE_P-1)*DY_P)
+
+

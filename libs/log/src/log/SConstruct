@@ -1,0 +1,8 @@
+
+try:
+  Import("env")
+except:
+  import os
+  env = Environment(CPPPATH="../include", LIBPATH=os.environ["RAL_LIB_DIR"])
+    
+env.Program("test_log", ["test_log.cc"], LIBS=['log'])

@@ -1,0 +1,19 @@
+
+import os
+
+# Note that LOCAL_INC_DIR must contain the netcdf include files
+env = Environment(CPPPATH=[os.environ["NETCDF_INC_DIR"], os.environ["LOCAL_INC_DIR"], "include/dmapf", os.environ["RAL_INC_DIR"]], LIBPATH=[os.environ["LOCAL_LIB_DIR"], os.environ["RAL_LIB_DIR"]], CCFLAGS=os.environ["RAL_CFLAGS"])
+    
+env.Program("test_ruc20", ["test_ruc20.cc"], LIBS=["dmapf"])
+env.Program("test_alaska6", ["test_alaska6.cc"], LIBS=["dmapf"])
+env.Program("test_awips217", ["test_awips217.cc"], LIBS=["dmapf"])
+
+  
+
+          
+
+
+
+
+
+
